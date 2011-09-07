@@ -50,7 +50,7 @@ if __name__ == '__main__':
     datearray=lowestDate(datearray)
     
     if datearray !=[0,0,0]:
-      print "{0}-{1}-{2}".format(datearray[0], datearray[1], datearray[2])
+      print "{0}-{1:02d}-{2:02d}".format(datearray[0], datearray[1], datearray[2])
     else:
       print datestring.strip() + " is illegal" 
 
