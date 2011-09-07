@@ -45,12 +45,26 @@ class Test(unittest.TestCase):
     test = bestbefore.convertToNumbers("00/01/12")        
     self.assertListEqual(test, [0,1,12])
 
+    test = bestbefore.convertToNumbers("0000/01/12")        
+    self.assertListEqual(test, [0,1,12])
+
   def testLowestDate(self):
     self.assertListEqual(bestbefore.lowestDate([1,2,3]), [2001,2,3])
     self.assertListEqual(bestbefore.lowestDate([3,2,1]), [2001,2,3])
+    self.assertListEqual(bestbefore.lowestDate([23,0,12]), [2000,12,23])
+    self.assertListEqual(bestbefore.lowestDate([31,5,2012]), [2012,5,31])
+    self.assertListEqual(bestbefore.lowestDate([30,5,12]), [2005,12,30])
+    self.assertListEqual(bestbefore.lowestDate([1,2,3]), [2001,2,3])
+    self.assertListEqual(bestbefore.lowestDate([1,0,1]), [2000,1,1])
 
   def testLowestDate1000(self):
     self.assertListEqual(bestbefore.lowestDate([3,2002,1]), [2002,1,3])
+
+  def testLowestDateLeap1(self):
+    self.assertListEqual(bestbefore.lowestDate([2,2200,29]), [0,0,0])
+
+  def testLowestDateLeap2(self):
+    self.assertListEqual(bestbefore.lowestDate([2,2000,29]), [2000,2,29])
 
   def testLowestDateSP2(self):
     self.assertListEqual(bestbefore.lowestDate([31,9,73]), [0,0,0])

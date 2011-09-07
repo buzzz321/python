@@ -27,7 +27,7 @@ def isDate(year,month,day):
 
 def lowestDate(indata):  
   data=sorted(indata)
-
+  
   if data[2] > 31:
     data.insert(0,data.pop(2))
 
@@ -40,11 +40,9 @@ def lowestDate(indata):
     retVal = [0,0,0]
 
   return retVal
-
 if __name__ == '__main__':
   if len(sys.argv) == 2:
-    infile = open(sys.argv[1],'r')
-    datestring = infile.readline()
+    datestring = sys.argv[1]
 
     datearray = convertToNumbers(datestring.strip())
     datearray=lowestDate(datearray)
@@ -56,4 +54,3 @@ if __name__ == '__main__':
 
   else:
     print "Please run with an input file"
-  pass
