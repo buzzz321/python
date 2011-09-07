@@ -45,11 +45,6 @@ class Test(unittest.TestCase):
     test = bestbefore.convertToNumbers("00/01/12")        
     self.assertListEqual(test, [0,1,12])
 
-  def testIsYear(self):
-    self.assertTrue(bestbefore.isYear(0))
-    self.assertTrue(bestbefore.isYear(99))
-    self.assertFalse(bestbefore.isYear(10))
-
   def testLowestDate(self):
     self.assertListEqual(bestbefore.lowestDate([1,2,3]), [2001,2,3])
     self.assertListEqual(bestbefore.lowestDate([3,2,1]), [2001,2,3])

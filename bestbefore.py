@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 '''
 Created on 5 sep 2011
 
 @author: anders
 '''
-import datetime
+import datetime, sys
 
 def isLeapYear(year):
   retVal = year%4 == 0
@@ -24,14 +25,6 @@ def isDate(year,month,day):
     pass
   return retVal
 
-def isYear(number):
-  retVal = False
-
-  if number == 0 or number > 31:
-    retVal = True
-
-  return retVal
-
 def lowestDate(indata):  
   data=sorted(indata)
 
@@ -49,4 +42,18 @@ def lowestDate(indata):
   return retVal
 
 if __name__ == '__main__':
+  if len(sys.argv) == 2:
+    infile = open(sys.argv[1],'r')
+    datestring = infile.readline()
+
+    datearray = convertToNumbers(datestring.strip())
+    datearray=lowestDate(datearray)
+    
+    if datearray !=[0,0,0]:
+      print "{0}-{1}-{2}".format(datearray[0], datearray[1], datearray[2])
+    else:
+      print datestring.strip() + " is illegal" 
+
+  else:
+    print "Please run with an input file"
   pass
