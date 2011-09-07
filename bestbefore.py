@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 '''
 Created on 5 sep 2011
 
@@ -40,17 +39,14 @@ def lowestDate(indata):
     retVal = [0,0,0]
 
   return retVal
+
 if __name__ == '__main__':
-  if len(sys.argv) == 2:
-    datestring = sys.argv[1]
+  datestring = sys.stdin.readline()
 
-    datearray = convertToNumbers(datestring.strip())
-    datearray=lowestDate(datearray)
+  datearray = convertToNumbers(datestring.strip())
+  datearray=lowestDate(datearray)
     
-    if datearray !=[0,0,0]:
-      print "{0}-{1:02d}-{2:02d}".format(datearray[0], datearray[1], datearray[2])
-    else:
-      print datestring.strip() + " is illegal" 
-
+  if datearray !=[0,0,0]:
+    print "{0}-{1:02d}-{2:02d}".format(datearray[0], datearray[1], datearray[2])
   else:
-    print "Please run with an input file"
+    print datestring.strip() + " is illegal" 
