@@ -3,7 +3,7 @@ Created on 5 sep 2011
 
 @author: anders
 '''
-import datetime, sys
+import datetime, sys, itertools
 
 def isLeapYear(year):
     retVal = year%4 == 0
@@ -25,19 +25,19 @@ def isDate(year,month,day):
     return retVal
 
 def lowestDate(indata):  
-    data=sorted(indata)
+    allDates = itertools.permutations(indata)
+    validDates = []
 
-    if data[2] > 31:
-        data.insert(0,data.pop(2))
+    for testDate in allDates:
+        year = testDate[0] if testDate[0] >= 2000 else testDate[0] + 2000
+        if isDate(year,testDate[1],testDate[2]):
+            validDates.append(datetime.date(year, testDate[1], testDate[2]))
 
-    if data[0] < 1000:
-        data[0] = 2000 + data[0]
-
-    if isDate(data[0], data[1], data[2]):
-        retVal = data
-    else:
-        retVal = [0,0,0]
-
+    retVal = [0,0,0]
+    
+    if len(validDates) > 0:
+        lowest = sorted(validDates)[0]
+        retVal = [lowest.year, lowest.month, lowest.day]
     return retVal
 
 if __name__ == '__main__':

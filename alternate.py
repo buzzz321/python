@@ -21,10 +21,10 @@ def isDate(year,month,day):
 
 def lowestDate(indata):
     
-    tempDates = itertools.permutations(convertToNumbers(indata))
+    allDates = itertools.permutations(convertToNumbers(indata))
     validDates = []
 
-    for testDate in tempDates:
+    for testDate in allDates:
         if isDate(testDate[0],testDate[1],testDate[2]):
             year = testDate[0] if testDate[0] > 1000 else testDate[0] + 2000
             validDates.append(datetime.date(year, testDate[1], testDate[2]))
