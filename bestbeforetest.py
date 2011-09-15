@@ -56,6 +56,8 @@ class Test(unittest.TestCase):
         self.assertListEqual(bestbefore.lowestDate([30,5,12]), [2005,12,30])
         self.assertListEqual(bestbefore.lowestDate([1,2,3]), [2001,2,3])
         self.assertListEqual(bestbefore.lowestDate([1,0,1]), [2000,1,1])
+        self.assertListEqual(bestbefore.lowestDate([1,22,1503]), [1503,1,22])
+        self.assertListEqual(bestbefore.lowestDate([14,2,14]), [2014,2,14])
 
     def testLowestDate1000(self):
         self.assertListEqual(bestbefore.lowestDate([3,2002,1]), [2002,1,3])

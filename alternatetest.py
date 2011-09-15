@@ -12,7 +12,7 @@ class Test(unittest.TestCase):
 
 
     def testLowestDate(self):
-        self.assertEqual(datetime.date(2001,2,3), alternate.lowestDate("1/2/3"))
+        self.assertEqual([2001,2,3], alternate.lowestDate("1/2/3"))
         pass
 
 if __name__ == "__main__":

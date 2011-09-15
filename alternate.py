@@ -29,4 +29,9 @@ def lowestDate(indata):
             year = testDate[0] if testDate[0] > 1000 else testDate[0] + 2000
             validDates.append(datetime.date(year, testDate[1], testDate[2]))
 
-    return sorted(validDates)[0]
+    retVal = [0,0,0]
+
+    if len(validDates) > 0:
+        lowest = sorted(validDates)[0]
+        retVal = [lowest.year, lowest.month, lowest.day]
+    return retVal

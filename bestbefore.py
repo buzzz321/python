@@ -30,7 +30,7 @@ def lowestDate(indata):
     if data[2] > 31:
         data.insert(0,data.pop(2))
 
-    if data[0] < 2000:
+    if data[0] < 1000:
         data[0] = 2000 + data[0]
 
     if isDate(data[0], data[1], data[2]):
